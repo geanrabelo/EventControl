@@ -11,6 +11,24 @@
 
     <artifactId>infrastructure</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.br</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.br</groupId>
+            <artifactId>usecases</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.br</groupId>
+            <artifactId>application</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <maven.compiler.source>24</maven.compiler.source>
         <maven.compiler.target>24</maven.compiler.target>
