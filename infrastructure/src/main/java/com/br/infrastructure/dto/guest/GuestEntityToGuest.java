@@ -1,4 +1,4 @@
-package com.br.infrastructure.dto;
+package com.br.infrastructure.dto.guest;
 
 import com.br.core.entities.Guest;
 import com.br.infrastructure.domain.GuestEntity;

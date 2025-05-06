@@ -6,8 +6,8 @@ import com.br.core.enums.EnumCode;
 import com.br.core.exceptions.GuestAlreadyRegisteredEvent;
 import com.br.core.exceptions.GuestNotFound;
 import com.br.infrastructure.domain.GuestEntity;
-import com.br.infrastructure.dto.GuestEntityToGuest;
-import com.br.infrastructure.dto.GuestToEntityJpa;
+import com.br.infrastructure.dto.guest.GuestEntityToGuest;
+import com.br.infrastructure.dto.guest.GuestToEntityJpa;
 import com.br.infrastructure.repositories.GuestEntityRepository;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.br.infrastructure.dto;
+package com.br.infrastructure.dto.checkin;
 
 import com.br.core.entities.Checkin;
 import com.br.infrastructure.domain.CheckinEntity;

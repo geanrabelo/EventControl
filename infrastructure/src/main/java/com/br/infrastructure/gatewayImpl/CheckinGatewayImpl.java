@@ -9,7 +9,7 @@ import com.br.core.exceptions.EventNotFound;
 import com.br.core.exceptions.GuestNotFound;
 import com.br.infrastructure.domain.CheckinEntity;
 import com.br.infrastructure.domain.GuestEntity;
-import com.br.infrastructure.dto.CheckinToEntityJpa;
+import com.br.infrastructure.dto.checkin.CheckinToEntityJpa;
 import com.br.infrastructure.repositories.CheckinEntityRepository;
 import com.br.infrastructure.repositories.EventEntityRepository;
 import com.br.infrastructure.repositories.GuestEntityRepository;

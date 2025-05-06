@@ -5,8 +5,8 @@ import com.br.core.entities.Event;
 import com.br.core.enums.EnumCode;
 import com.br.core.exceptions.EventNotFound;
 import com.br.infrastructure.domain.EventEntity;
-import com.br.infrastructure.dto.EventEntityToEvent;
-import com.br.infrastructure.dto.EventToEntityJpa;
+import com.br.infrastructure.dto.event.EventEntityToEvent;
+import com.br.infrastructure.dto.event.EventToEntityJpa;
 import com.br.infrastructure.repositories.EventEntityRepository;
 import org.springframework.stereotype.Component;
 
