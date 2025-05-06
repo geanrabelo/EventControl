@@ -11,6 +11,14 @@
 
     <artifactId>usecases</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.br</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <maven.compiler.source>24</maven.compiler.source>
         <maven.compiler.target>24</maven.compiler.target>
