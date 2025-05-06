@@ -30,6 +30,7 @@ public class EventEntity {
 
     private Integer capacity;
 
+    @Enumerated(EnumType.STRING)
     private EventType eventType;
 
     private LocalDateTime createdAt;
