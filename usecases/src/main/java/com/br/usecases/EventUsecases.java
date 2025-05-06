@@ -7,11 +7,13 @@ import java.util.UUID;
 
 public interface EventUsecases {
 
-    String createEvent(Event event);
+    UUID createEvent(Event event);
 
     List<Event> findAll();
 
     Event findById(UUID id);
+
+    boolean existsById(UUID id);
 
     void canceledEvent(UUID id);
 }
