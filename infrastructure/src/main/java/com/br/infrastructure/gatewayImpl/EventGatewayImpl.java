@@ -3,6 +3,7 @@ package com.br.infrastructure.gatewayImpl;
 import com.br.application.gateway.EventGateway;
 import com.br.core.entities.Event;
 import com.br.infrastructure.domain.EventEntity;
+import com.br.infrastructure.dto.EventEntityToEvent;
 import com.br.infrastructure.dto.EventToEntityJpa;
 import com.br.infrastructure.repositories.EventEntityRepository;
 import org.springframework.stereotype.Component;
@@ -28,21 +29,29 @@ public class EventGatewayImpl implements EventGateway {
 
     @Override
     public List<Event> findAll() {
-        return List.of();
+        return eventEntityRepository.findAll().stream().map(e -> new EventEntityToEvent(e).toEvent()).toList();
     }
 
     @Override
     public Event findById(UUID id) {
-        return null;
+        if(existsById(id)){
+            EventEntity eventDatabase = eventEntityRepository.getReferenceById(id);
+            return new EventEntityToEvent(eventDatabase).toEvent();
+        }
+        throw null;
     }
 
     @Override
     public boolean existsById(UUID id) {
-        return false;
+        return eventEntityRepository.existsById(id);
     }
 
     @Override
     public void canceledEvent(UUID id) {
-
+        if(existsById(id)){
+            eventEntityRepository.deleteById(id);
+        }else{
+            throw null;
+        }
     }
 }
