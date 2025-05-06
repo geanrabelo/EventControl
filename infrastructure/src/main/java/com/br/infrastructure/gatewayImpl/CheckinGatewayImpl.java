@@ -36,6 +36,7 @@ public class CheckinGatewayImpl implements CheckinGateway {
         if(guestEntityRepository.existsById(guest.getId()) &&  eventEntityRepository.existsById(guest.getEventId())){
             GuestEntity guestDatabase = guestEntityRepository.getReferenceById(guest.getId());
             guestDatabase.setGuestStatus(GuestStatus.CHECKED_ID);
+            guestEntityRepository.save(guestDatabase);
             Checkin checkin = new Checkin.CheckinBuilder()
                     .builder()
                     .guestId(guest.getId())
