@@ -25,6 +25,7 @@
         <module>core</module>
 		<module>usecases</module>
 		<module>application</module>
+		<module>infrastructure</module>
 	</modules>
     <scm>
 		<connection/>
