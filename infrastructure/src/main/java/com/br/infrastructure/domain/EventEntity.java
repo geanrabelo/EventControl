@@ -1,6 +1,7 @@
 package com.br.infrastructure.domain;
 
 import com.br.core.enums.EventType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,12 +27,17 @@ public class EventEntity {
 
     private String location;
 
+    @Column(name = "date_time")
+    @JsonFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime datetime;
 
     private Integer capacity;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "event_type")
     private EventType eventType;
 
+    @Column(name = "created_at")
+    @JsonFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime createdAt;
 }

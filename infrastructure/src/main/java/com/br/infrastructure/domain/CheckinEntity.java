@@ -1,5 +1,6 @@
 package com.br.infrastructure.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +24,7 @@ public class CheckinEntity {
 
     private UUID eventId;
 
+    @JsonFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime checkinTime;
 
     private String device;

@@ -10,6 +10,7 @@ import com.br.infrastructure.dto.event.EventToEntityJpa;
 import com.br.infrastructure.repositories.EventEntityRepository;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,6 +26,7 @@ public class EventGatewayImpl implements EventGateway {
     @Override
     public UUID createEvent(Event event) {
         EventEntity conversion = new EventToEntityJpa(event).toJpa();
+        conversion.setCreatedAt(LocalDateTime.now());
         EventEntity eventSaved = eventEntityRepository.save(conversion);
         return eventSaved.getId();
     }

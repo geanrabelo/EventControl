@@ -1,6 +1,7 @@
 package com.br.infrastructure.domain;
 
 import com.br.core.enums.GuestStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,5 +32,6 @@ public class GuestEntity {
 
     private UUID eventId;
 
+    @JsonFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime registeredAt;
 }
