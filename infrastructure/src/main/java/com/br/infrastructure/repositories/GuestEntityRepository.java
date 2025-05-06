@@ -8,4 +8,6 @@ import java.util.UUID;
 public interface GuestEntityRepository extends JpaRepository<GuestEntity, UUID> {
 
     boolean existsById(UUID id);
+
+    boolean existsByEmail(String email);
 }
