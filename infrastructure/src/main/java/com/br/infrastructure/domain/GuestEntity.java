@@ -27,11 +27,14 @@ public class GuestEntity {
 
     private String document;
 
+    @Column(name = "guest_status")
     @Enumerated(EnumType.STRING)
     private GuestStatus guestStatus;
 
+    @Column(name = "event_id")
     private UUID eventId;
 
+    @Column(name = "registered_at")
     @JsonFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime registeredAt;
 }

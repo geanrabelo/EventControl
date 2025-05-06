@@ -11,6 +11,7 @@ import com.br.infrastructure.dto.guest.GuestToEntityJpa;
 import com.br.infrastructure.repositories.GuestEntityRepository;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,6 +28,7 @@ public class GuestGatewayImpl implements GuestGateway {
     public UUID registeredGuest(Guest guest) {
         if(!alreadyRegistered(guest)){
             GuestEntity conversion = new GuestToEntityJpa(guest).toEntityJpa();
+            conversion.setRegisteredAt(LocalDateTime.now());
             GuestEntity guestSaved = guestEntityRepository.save(conversion);
             return guestSaved.getEventId();
         }

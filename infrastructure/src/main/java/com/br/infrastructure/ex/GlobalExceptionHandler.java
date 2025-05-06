@@ -4,12 +4,12 @@ import com.br.core.exceptions.EventNotFound;
 import com.br.core.exceptions.GuestAlreadyRegisteredEvent;
 import com.br.core.exceptions.GuestNotFound;
 import com.br.infrastructure.ex.error.ErrorResponse;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@Configuration
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(EventNotFound.class)
