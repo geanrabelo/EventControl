@@ -13,10 +13,12 @@ import com.br.infrastructure.dto.checkin.CheckinToEntityJpa;
 import com.br.infrastructure.repositories.CheckinEntityRepository;
 import com.br.infrastructure.repositories.EventEntityRepository;
 import com.br.infrastructure.repositories.GuestEntityRepository;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Component
 public class CheckinGatewayImpl implements CheckinGateway {
 
     private final CheckinEntityRepository checkinEntityRepository;

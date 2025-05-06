@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: EventControl
+  cache:
+    type: redis
+    host: localhost
+    port: 6379
+    redis:
+      time-to-live: 60000
+  datasource:
+    url: jdbc:postgresql://localhost:5432/event
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    stream-write-constraints:
+      max-nesting-depth: 2000
