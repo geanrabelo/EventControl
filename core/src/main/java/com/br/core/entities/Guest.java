@@ -1,6 +1,6 @@
-package com.br.entities;
+package com.br.core.entities;
 
-import com.br.enums.GuestStatus;
+import com.br.core.enums.GuestStatus;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

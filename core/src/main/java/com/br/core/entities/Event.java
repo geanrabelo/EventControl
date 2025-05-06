@@ -1,6 +1,6 @@
-package com.br.entities;
+package com.br.core.entities;
 
-import com.br.enums.EventType;
+import com.br.core.enums.EventType;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

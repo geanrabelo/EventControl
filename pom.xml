@@ -23,7 +23,8 @@
 	</developers>
     <modules>
         <module>core</module>
-    </modules>
+		<module>usecases</module>
+	</modules>
     <scm>
 		<connection/>
 		<developerConnection/>

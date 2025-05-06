@@ -1,4 +1,4 @@
-package com.br.enums;
+package com.br.core.enums;
 
 public enum GuestStatus {
     PENDING,
