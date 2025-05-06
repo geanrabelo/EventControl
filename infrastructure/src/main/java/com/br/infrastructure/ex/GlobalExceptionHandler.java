@@ -14,19 +14,19 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EventNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse eventNotFoundHandler(String message){
-        return ErrorResponse.notFound(message);
+    public ErrorResponse eventNotFoundHandler(EventNotFound eventNotFound){
+        return ErrorResponse.notFound(eventNotFound.getMessage());
     }
 
     @ExceptionHandler(GuestNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorResponse guestNotFoundHandler(String message){
-        return ErrorResponse.notFound(message);
+    public ErrorResponse guestNotFoundHandler(GuestNotFound guestNotFound){
+        return ErrorResponse.notFound(guestNotFound.getMessage());
     }
 
     @ExceptionHandler(GuestAlreadyRegisteredEvent.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ErrorResponse guestAlreadyRegisteredEventHandler(String message) {
-        return ErrorResponse.conflict(message);
+    public ErrorResponse guestAlreadyRegisteredEventHandler(GuestAlreadyRegisteredEvent guestAlreadyRegisteredEvent) {
+        return ErrorResponse.conflict(guestAlreadyRegisteredEvent.getMessage());
     }
 }
