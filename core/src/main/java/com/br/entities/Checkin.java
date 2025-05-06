@@ -94,12 +94,7 @@ public class Checkin {
             this.device = device;
             return this;
         }
-        //        private UUID id;
-        //        private UUID guestId;
-        //        private UUID eventId;
-        //        private LocalDateTime checkinTime;
-        //        private String device;
-        //
+
         public Checkin build(){
             return new Checkin(
                     this.id,
