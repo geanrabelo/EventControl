@@ -4,7 +4,9 @@ import com.br.application.gateway.GuestGateway;
 import com.br.core.entities.Guest;
 import com.br.core.enums.EnumCode;
 import com.br.core.exceptions.GuestAlreadyRegisteredEvent;
+import com.br.core.exceptions.GuestNotFound;
 import com.br.infrastructure.domain.GuestEntity;
+import com.br.infrastructure.dto.GuestEntityToGuest;
 import com.br.infrastructure.dto.GuestToEntityJpa;
 import com.br.infrastructure.repositories.GuestEntityRepository;
 import org.springframework.stereotype.Component;
@@ -33,12 +35,16 @@ public class GuestGatewayImpl implements GuestGateway {
 
     @Override
     public List<Guest> findAll() {
-        return List.of();
+        return guestEntityRepository.findAll().stream().map(g -> new GuestEntityToGuest(g).toGuest()).toList();
     }
 
     @Override
     public Guest findById(UUID id) {
-        return null;
+        if(existsById(id)){
+            GuestEntity guestDatabase = guestEntityRepository.getReferenceById(id);
+            return new GuestEntityToGuest(guestDatabase).toGuest();
+        }
+        throw new GuestNotFound(EnumCode.GU000.getMessage());
     }
 
     @Override
@@ -51,11 +57,15 @@ public class GuestGatewayImpl implements GuestGateway {
 
     @Override
     public boolean existsById(UUID id) {
-        return false;
+        return guestEntityRepository.existsById(id);
     }
 
     @Override
     public void deleteById(UUID id) {
-
+        if(existsById(id)){
+            guestEntityRepository.deleteById(id);
+        }else{
+            throw new GuestNotFound(EnumCode.GU000.getMessage());
+        }
     }
 }
