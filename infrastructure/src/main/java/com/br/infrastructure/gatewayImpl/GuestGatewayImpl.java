@@ -8,7 +8,6 @@ import com.br.core.exceptions.GuestNotFound;
 import com.br.infrastructure.domain.GuestEntity;
 import com.br.infrastructure.dto.GuestEntityToGuest;
 import com.br.infrastructure.dto.GuestToEntityJpa;
-import com.br.infrastructure.repositories.EventEntityRepository;
 import com.br.infrastructure.repositories.GuestEntityRepository;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +18,7 @@ import java.util.UUID;
 public class GuestGatewayImpl implements GuestGateway {
 
     private final GuestEntityRepository guestEntityRepository;
+
     public GuestGatewayImpl(GuestEntityRepository guestEntityRepository){
         this.guestEntityRepository = guestEntityRepository;
     }
