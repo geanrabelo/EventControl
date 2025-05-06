@@ -20,10 +20,13 @@ public class CheckinEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
+    @Column(name = "guest_id")
     private UUID guestId;
 
+    @Column(name = "event_id")
     private UUID eventId;
 
+    @Column(name = "checkin_time")
     @JsonFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime checkinTime;
 
