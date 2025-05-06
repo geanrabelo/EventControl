@@ -2,6 +2,8 @@ package com.br.infrastructure.gatewayImpl;
 
 import com.br.application.gateway.EventGateway;
 import com.br.core.entities.Event;
+import com.br.core.enums.EnumCode;
+import com.br.core.exceptions.EventNotFound;
 import com.br.infrastructure.domain.EventEntity;
 import com.br.infrastructure.dto.EventEntityToEvent;
 import com.br.infrastructure.dto.EventToEntityJpa;
@@ -38,7 +40,7 @@ public class EventGatewayImpl implements EventGateway {
             EventEntity eventDatabase = eventEntityRepository.getReferenceById(id);
             return new EventEntityToEvent(eventDatabase).toEvent();
         }
-        throw null;
+        throw new EventNotFound(EnumCode.EV000.getMessage());
     }
 
     @Override
@@ -51,7 +53,7 @@ public class EventGatewayImpl implements EventGateway {
         if(existsById(id)){
             eventEntityRepository.deleteById(id);
         }else{
-            throw null;
+            throw new EventNotFound(EnumCode.EV000.getMessage());
         }
     }
 }
