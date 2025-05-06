@@ -59,4 +59,55 @@ public class Checkin {
         this.device = device;
     }
 
+    public static class CheckinBuilder{
+        private UUID id;
+        private UUID guestId;
+        private UUID eventId;
+        private LocalDateTime checkinTime;
+        private String device;
+
+        public CheckinBuilder builder(){
+            return new CheckinBuilder();
+        }
+
+        public CheckinBuilder id(UUID id) {
+            this.id = id;
+            return this;
+        }
+
+        public CheckinBuilder guestId(UUID guestId) {
+            this.guestId = guestId;
+            return this;
+        }
+
+        public CheckinBuilder eventId(UUID eventId) {
+            this.eventId = eventId;
+            return this;
+        }
+
+        public CheckinBuilder checkinTime(LocalDateTime checkinTime) {
+            this.checkinTime = checkinTime;
+            return this;
+        }
+
+        public CheckinBuilder device(String device) {
+            this.device = device;
+            return this;
+        }
+        //        private UUID id;
+        //        private UUID guestId;
+        //        private UUID eventId;
+        //        private LocalDateTime checkinTime;
+        //        private String device;
+        //
+        public Checkin build(){
+            return new Checkin(
+                    this.id,
+                    this.guestId,
+                    this.eventId,
+                    this.checkinTime,
+                    this.device
+            );
+        }
+    }
 }
