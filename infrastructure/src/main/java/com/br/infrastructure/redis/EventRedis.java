@@ -11,11 +11,11 @@ public record EventRedis(UUID id,
                          String name,
                          String description,
                          String location,
-                         @JsonFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
+                         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
                          LocalDateTime datetime,
                          Integer capacity,
                          EventType eventType,
-                         @JsonFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
+                         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
                          LocalDateTime createdAt) {
 
     public static EventRedis toEventRedis(EventEntity eventEntity){

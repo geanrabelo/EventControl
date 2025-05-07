@@ -39,4 +39,18 @@ public class RedisConfig {
 
         return template;
     }
+
+    @Bean
+    public RedisTemplate<String, GuestRedis> guestRedisTemplate(){
+        RedisTemplate<String, GuestRedis> template = new RedisTemplate<>();
+        template.setConnectionFactory(lettuceConnectionFactory());
+
+        template.setKeySerializer(new StringRedisSerializer());
+
+        Jackson2JsonRedisSerializer<GuestRedis> jackson = new Jackson2JsonRedisSerializer<>(objectMapper(), GuestRedis.class);
+
+        template.setValueSerializer(jackson);
+
+        return template;
+    }
 }
