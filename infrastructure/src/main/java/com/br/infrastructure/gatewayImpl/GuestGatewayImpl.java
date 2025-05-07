@@ -49,15 +49,14 @@ public class GuestGatewayImpl implements GuestGateway {
         Set<GuestRedis> setGuestRedis = guestRedisTemplate.opsForZSet().rangeByScore(keyPattern, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
         if(setGuestRedis.size() != 0){
             setGuestRedis.stream().map(s -> new Guest.GuestBuilder()
-                    //    private UUID id;
-                    //    private String name;
-                    //    private String email;
-                    //    private String document;
-                    //    private GuestStatus guestStatus;
-                    //    private UUID eventId;
-                    //    private LocalDateTime registeredAt;
                     .builder()
                     .id(s.id())
+                    .name(s.name())
+                    .email(s.email())
+                    .document(s.document())
+                    .guestStatus(s.guestStatus())
+                    .eventId(s.eventId())
+                    .registeredAt(s.registeredAt())
                     .build()).toList();
         }
         return guestEntityRepository.findAll().stream().map(g -> new GuestEntityToGuest(g).toGuest()).toList();
@@ -66,6 +65,20 @@ public class GuestGatewayImpl implements GuestGateway {
     @Override
     public Guest findById(UUID id) {
         if(existsById(id)){
+            Set<GuestRedis> setGuestRedis = guestRedisTemplate.opsForZSet().rangeByScore(keyPattern, id.hashCode(), id.hashCode());
+            if(setGuestRedis.size() != 0){
+                GuestRedis guestRedis = setGuestRedis.stream().findFirst().get();
+                return new Guest.GuestBuilder()
+                        .builder()
+                        .id(guestRedis.id())
+                        .name(guestRedis.name())
+                        .email(guestRedis.email())
+                        .document(guestRedis.document())
+                        .guestStatus(guestRedis.guestStatus())
+                        .eventId(guestRedis.eventId())
+                        .registeredAt(guestRedis.registeredAt())
+                        .build();
+            }
             GuestEntity guestDatabase = guestEntityRepository.getReferenceById(id);
             return new GuestEntityToGuest(guestDatabase).toGuest();
         }
