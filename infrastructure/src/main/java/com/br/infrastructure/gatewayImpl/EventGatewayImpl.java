@@ -7,7 +7,9 @@ import com.br.core.exceptions.EventNotFound;
 import com.br.infrastructure.domain.EventEntity;
 import com.br.infrastructure.dto.event.EventEntityToEvent;
 import com.br.infrastructure.dto.event.EventToEntityJpa;
+import com.br.infrastructure.redis.EventRedis;
 import com.br.infrastructure.repositories.EventEntityRepository;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -18,9 +20,12 @@ import java.util.UUID;
 public class EventGatewayImpl implements EventGateway {
 
     private final EventEntityRepository eventEntityRepository;
+    private final RedisTemplate<String, EventRedis> eventRedisTemplate;
+    private static final String keyPattern = "event: ";
 
-    public EventGatewayImpl(EventEntityRepository eventEntityRepository){
+    public EventGatewayImpl(EventEntityRepository eventEntityRepository, RedisTemplate<String, EventRedis> eventRedisTemplate){
         this.eventEntityRepository = eventEntityRepository;
+        this.eventRedisTemplate = eventRedisTemplate;
     }
 
     @Override
@@ -28,6 +33,9 @@ public class EventGatewayImpl implements EventGateway {
         EventEntity conversion = new EventToEntityJpa(event).toJpa();
         conversion.setCreatedAt(LocalDateTime.now());
         EventEntity eventSaved = eventEntityRepository.save(conversion);
+
+        EventRedis eventRedis = EventRedis.toEventRedis(eventSaved);
+        eventRedisTemplate.opsForValue().set(eventRedis.id().toString(), eventRedis);
         return eventSaved.getId();
     }
 
