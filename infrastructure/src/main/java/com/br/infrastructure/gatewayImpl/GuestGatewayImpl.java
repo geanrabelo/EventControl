@@ -55,7 +55,7 @@ public class GuestGatewayImpl implements GuestGateway {
     public List<Guest> findAll() {
         Set<GuestRedis> setGuestRedis = guestRedisTemplate.opsForZSet().rangeByScore(keyPattern, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
         if(setGuestRedis.size() != 0){
-            setGuestRedis.stream().map(s -> new Guest.GuestBuilder()
+            return setGuestRedis.stream().map(s -> new Guest.GuestBuilder()
                     .builder()
                     .id(s.id())
                     .name(s.name())
