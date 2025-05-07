@@ -43,7 +43,7 @@ public class GuestGatewayImpl implements GuestGateway {
             GuestEntity guestSaved = guestEntityRepository.save(conversion);
             GuestRedis guestRedis = GuestRedis.toGuestRedis(guestSaved);
             guestRedisTemplate.opsForZSet().add(keyPattern, guestRedis, guestRedis.id().hashCode());
-            return guestSaved.getEventId();
+            return guestSaved.getId();
         } else if (alreadyRegistered(guest)) {
             throw new GuestAlreadyRegisteredEvent(EnumCode.GU001.getMessage());
         }else {
